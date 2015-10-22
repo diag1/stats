@@ -14,8 +14,12 @@ namespace Stats
 			red = new Reader (rout);
 			lst = red.getFile ();
 		}
+		/// <summary>
+		/// Gets the vel media.
+		/// </summary>
+		/// <returns>The vel med total on m/s.</returns>
 		public String getVelMedTot(){
-			
+			String toret = Convert.ToString (getDistTot () / getDurTot ())+"m/s";
 		}
 
 		String getVelMedDay(String day);
@@ -23,6 +27,11 @@ namespace Stats
 		String getNumStpsDay(String day);
 		String getNumHourTot();
 		String getNumHourDay(String day);
+		/// <summary>
+		/// Calculate total duration
+		/// </summary>
+		/// <returns>Total duration.</returns>
+		/// <param name="lt">List of Sessions</param>
 		private int getDurTot(List<Session> lt){
 			int toret;
 			foreach(Session k in lt){
@@ -30,6 +39,22 @@ namespace Stats
 			}
 			return toret;
 		}
+		/// <summary>
+		/// Calculate total distance
+		/// </summary>
+		/// <returns>total distance.</returns>
+		/// <param name="lt"> List of Sessions.</param>
+		private int getDistTot(List<Session> lt){
+			int toret;
+			foreach(Session k in lt){
+				toret+= k.distance;
+			}
+			return toret;
+		}
+		private int getDay(){
+			
+		}
+
 	}
 }
 
