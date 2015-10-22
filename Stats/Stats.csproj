@@ -35,6 +35,7 @@
     <Compile Include="Core\Fachada.cs" />
     <Compile Include="Core\Session.cs" />
     <Compile Include="Core\Reader.cs" />
+    <Compile Include="Core\Functions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

@@ -4,9 +4,9 @@ namespace Stats
 {
 	public class Session
 	{
-		public Session ()
-		{
-		}
+		public int start{ get; set;}
+		public int duration{ get; set;}
+		public int distance{ get; set;}
 	}
 }
 
