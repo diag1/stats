@@ -2,11 +2,14 @@
 
 namespace Stats
 {
-	public class Fachada
+	public interface Fachada
 	{
-		public Fachada ()
-		{
-		}
+		String getVelMedTot();
+		String getVelMedDay(String day);
+		String getNumStpsTot();
+		String getNumStpsDay(String day);
+		String getNumHourTot();
+		String getNumHourDay(String day);
 	}
 }
 
