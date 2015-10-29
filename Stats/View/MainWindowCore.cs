@@ -14,9 +14,6 @@ namespace Stats
 		/// Gets the peso.
 		/// </summary>
 		/// <returns>The peso.</returns>
-		private String getPeso(){
-			return fa.getActWeight ();
-		}
 	}
 }
 

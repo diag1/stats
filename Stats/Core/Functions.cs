@@ -92,11 +92,11 @@ namespace Stats
 		/// </summary>
 		/// <returns>The total number of hour .</returns>
 		public String getNumHourTot(){
-			double med = 0;
+			double toret=0.0;
 			foreach(Session k in lst){
-				med+= k.duration/3600;
+				toret=k.duration/3600;
 			}
-			return Convert.ToString(med);
+			return Convert.ToString(toret);
 		}
 		/// <summary>
 		/// Gets the number hour of this day.
