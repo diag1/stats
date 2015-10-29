@@ -114,8 +114,7 @@ namespace Stats
 		/// </summary>
 		/// <returns>The actual weight.</returns>
 		public String getActWeight(){
-			
-			return Convert.ToString (((Session)lst[lst.Count-1]).weight);
+			return Convert.ToString (lst[lst.Count-1].weight);
 		}
 		/// <summary>
 		/// Gets the weight day.
@@ -125,7 +124,7 @@ namespace Stats
 		public String getWeightDay(String day){
 			double med = 0;
 			foreach(Session k in lst){
-				if (k.day.Equals(day)) {
+				if (k.start.Equals(day)) {
 					med= k.weight;
 				}
 			}

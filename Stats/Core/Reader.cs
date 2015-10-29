@@ -12,6 +12,7 @@ namespace Stats
 			using (StreamReader r = new StreamReader(nameArch)){
 				string json = r.ReadToEnd();
 				List<Session> items = JsonConvert.DeserializeObject<List<Session>>(json);
+				this.lst = items;
 			}
 		}
 		public List<Session> getFile(){

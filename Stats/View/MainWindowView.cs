@@ -7,12 +7,15 @@ namespace Stats
 		public MainWindow ()
 			:base(Gtk.WindowType.Toplevel)
 		{
-			fa=new Functions(".");
+			fa=new Functions("./json");
 			this.build ();
 			/*this.vBoxIntroducir.Visible = false;
 			this.vBoxListar.Visible = false;
 			fa = new AutobusesGTK.Core.Fachada ();*/
 		}
+		/// <summary>
+		/// Build this instance.
+		/// </summary>
 		private void build(){
 			SetDefaultSize(250, 200);
 			vBoxMain = new Gtk.VBox (false, 5);
@@ -21,6 +24,7 @@ namespace Stats
 			this.lb2 = new Gtk.Label("Peso: "+getPeso());
 			//vBox
 			vBoxMain.PackStart(this.lb1,true,false,5);
+			vBoxMain.PackStart(this.lb2,true,false,5);
 			this.DeleteEvent += (o, args) =>this.OnClose() ;
 
 			var a =  new Gtk.VBox (false, 5);
