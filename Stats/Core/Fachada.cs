@@ -12,6 +12,8 @@ namespace Stats
 		String getNumStpsDay(String day);
 		String getNumHourTot();
 		String getNumHourDay(String day);
+		String getActWeisght();
+		String getWeightDay(String day);
 	}
 }
 
