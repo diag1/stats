@@ -5,15 +5,15 @@ namespace Stats
 	public interface Fachada
 	{	
 		String getDistTot();
-		String getDistDay(String day);
+		String getDistDay(DateTime fecha);
 		String getVelMedTot();
-		String getVelMedDay(String day);
+		String getVelMedDay(DateTime fecha);
 		String getNumStpsTot();
-		String getNumStpsDay(String day);
+		String getNumStpsDay(DateTime fecha);
 		String getNumHourTot();
-		String getNumHourDay(String day);
+		String getNumHourDay(DateTime fecha);
 		String getActWeight();
-		String getWeightDay(String day);
+		String getWeightDay(DateTime fecha);
 	}
 }
 

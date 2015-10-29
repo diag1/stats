@@ -19,10 +19,11 @@ namespace Stats
 		/// </summary>
 		/// <returns>The dist day.</returns>
 		/// <param name="day">Day.</param>
-		public String getDistDay(String day){
+		public String getDistDay(DateTime fecha){
 			double med=0.0;
 			foreach(Session k in lst){
-				if (k.day.Equals(day)) {
+				DateTime f = FromUnixTime (k.start);
+				if (f.Equals(fecha)) {
 					med= k.distance;
 				}
 			}
@@ -48,10 +49,11 @@ namespace Stats
 		/// </summary>
 		/// <returns>The vel med day.</returns>
 		/// <param name="day">Day.</param>
-		public String getVelMedDay(String day){
+		public String getVelMedDay(DateTime fecha){
 			double med=0.0;
 			foreach(Session k in lst){
-				if (k.day.Equals(day)) {
+				DateTime f = FromUnixTime (k.start);
+				if (f.Equals(fecha)) {
 					med= k.distance/k.duration;
 				}
 			}
@@ -74,11 +76,12 @@ namespace Stats
 		/// </summary>
 		/// <returns>The number stps day.</returns>
 		/// <param name="day">Day.</param>
-		public String getNumStpsDay(String day){
+		public String getNumStpsDay(DateTime fecha){
 			double distStep=0.6;
 			double med = 0;
 			foreach(Session k in lst){
-				if (k.day.Equals(day)) {
+				DateTime f = FromUnixTime (k.start);
+				if (f.Equals(fecha)) {
 					med= k.distance/distStep;
 				}
 			}
@@ -100,10 +103,11 @@ namespace Stats
 		/// </summary>
 		/// <returns>The number hour of this day.</returns>
 		/// <param name="day">Day.</param>
-		public String getNumHourDay(String day){
+		public String getNumHourDay(DateTime fecha){
 			double med = 0;
 			foreach(Session k in lst){
-				if (k.day.Equals(day)) {
+				DateTime f = FromUnixTime (k.start);
+				if (f.Equals(fecha)) {
 					med= k.duration/3600;
 				}
 			}
@@ -121,10 +125,11 @@ namespace Stats
 		/// </summary>
 		/// <returns>The weight day.</returns>
 		/// <param name="day">Day.</param>
-		public String getWeightDay(String day){
+		public String getWeightDay(DateTime fecha){
 			double med = 0;
 			foreach(Session k in lst){
-				if (k.start.Equals(day)) {
+				DateTime f = FromUnixTime (k.start);
+				if (f.Equals(fecha)) {
 					med= k.weight;
 				}
 			}
@@ -153,6 +158,16 @@ namespace Stats
 				toret+= k.distance;
 			}
 			return toret;
+		}
+		/// <summary>
+		/// Froms the unix time.
+		/// </summary>
+		/// <returns>The unix time.</returns>
+		/// <param name="unixTime">Unix time.</param>
+		private DateTime FromUnixTime(long unixTime)
+		{
+			var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+			return epoch.AddSeconds(unixTime);
 		}
 
 	}

@@ -17,7 +17,6 @@ namespace Stats
 		private String getPeso(){
 			return fa.getActWeight ();
 		}
-
 	}
 }
 
