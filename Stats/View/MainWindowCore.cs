@@ -7,9 +7,10 @@ namespace Stats
 		private void OnClose(){
 			Gtk.Application.Quit ();
 		}
-		void OnExposed (object o, ExposeEventArgs args) {
-			da.GdkWindow.DrawLine(da.Style.BaseGC(StateType.Normal), 0, 0, 400, 300);
+		private String getPeso(){
+			return fa.getActWeight ();
 		}
+
 	}
 }
 
