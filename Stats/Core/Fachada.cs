@@ -12,7 +12,7 @@ namespace Stats
 		String getNumStpsDay(String day);
 		String getNumHourTot();
 		String getNumHourDay(String day);
-		String getActWeisght();
+		String getActWeight();
 		String getWeightDay(String day);
 	}
 }

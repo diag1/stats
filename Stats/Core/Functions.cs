@@ -114,7 +114,8 @@ namespace Stats
 		/// </summary>
 		/// <returns>The actual weight.</returns>
 		public String getActWeight(){
-			return Convert.ToString (((Session)lst.FindIndex(lst.Count)).weight);
+			
+			return Convert.ToString (((Session)lst[lst.Count-1]).weight);
 		}
 		/// <summary>
 		/// Gets the weight day.
