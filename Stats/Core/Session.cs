@@ -8,6 +8,7 @@ namespace Stats
 		public int duration{ get; set;}
 		public int distance{ get; set;}
 		public int day{get; set;}
+		public int weight{ get; set;}
 	}
 }
 

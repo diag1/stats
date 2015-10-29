@@ -110,6 +110,27 @@ namespace Stats
 			return Convert.ToString(med);
 		}
 		/// <summary>
+		/// Gets the actual weight.
+		/// </summary>
+		/// <returns>The actual weight.</returns>
+		public String getActWeight(){
+			return Convert.ToString (((Session)lst.FindIndex(lst.Count)).weight);
+		}
+		/// <summary>
+		/// Gets the weight day.
+		/// </summary>
+		/// <returns>The weight day.</returns>
+		/// <param name="day">Day.</param>
+		public String getWeightDay(String day){
+			double med = 0;
+			foreach(Session k in lst){
+				if (k.day.Equals(day)) {
+					med= k.weight;
+				}
+			}
+			return Convert.ToString(med);
+		}
+		/// <summary>
 		/// Calculate total duration
 		/// </summary>
 		/// <returns>Total duration.</returns>
