@@ -15,26 +15,108 @@ namespace Stats
 			lst = red.getFile ();
 		}
 		/// <summary>
+		/// Gets the dist day.
+		/// </summary>
+		/// <returns>The dist day.</returns>
+		/// <param name="day">Day.</param>
+		public String getDistDay(String day){
+			double med=0.0;
+			foreach(Session k in lst){
+				if (k.day.Equals(day)) {
+					med= k.distance;
+				}
+			}
+			return Convert.ToString(med);
+		}
+		/// <summary>
+		/// Gets the dist tot.
+		/// </summary>
+		/// <returns>The dist tot.</returns>
+		public String getDistTot(){
+			return Convert.ToString (getDistTotIn ());
+		}
+		/// <summary>
 		/// Gets the vel media.
 		/// </summary>
 		/// <returns>The vel med total on m/s.</returns>
 		public String getVelMedTot(){
-			String toret = Convert.ToString (getDistTot () / getDurTot ())+"m/s";
+			String toret = Convert.ToString (getDistTotIn () / getDurTot ())+"m/s";
+			return toret;
 		}
-
-		String getVelMedDay(String day);
-		String getNumStpsTot();
-		String getNumStpsDay(String day);
-		String getNumHourTot();
-		String getNumHourDay(String day);
+		/// <summary>
+		/// Gets the vel med day.
+		/// </summary>
+		/// <returns>The vel med day.</returns>
+		/// <param name="day">Day.</param>
+		public String getVelMedDay(String day){
+			double med=0.0;
+			foreach(Session k in lst){
+				if (k.day.Equals(day)) {
+					med= k.distance/k.duration;
+				}
+			}
+			return Convert.ToString(med);
+		}
+		/// <summary>
+		/// Gets the number stps tot.
+		/// </summary>
+		/// <returns>The number stps tot.</returns>
+		public String getNumStpsTot(){
+			double distStep=0.6;
+			double med = 0;
+			foreach(Session k in lst){
+				med+= k.distance/distStep;
+			}
+			return Convert.ToString(med);
+		}
+		/// <summary>
+		/// Gets the number stps day.
+		/// </summary>
+		/// <returns>The number stps day.</returns>
+		/// <param name="day">Day.</param>
+		public String getNumStpsDay(String day){
+			double distStep=0.6;
+			double med = 0;
+			foreach(Session k in lst){
+				if (k.day.Equals(day)) {
+					med= k.distance/distStep;
+				}
+			}
+			return Convert.ToString(med);
+		}
+		/// <summary>
+		/// Calculate Total Num of Hours
+		/// </summary>
+		/// <returns>The total number of hour .</returns>
+		public String getNumHourTot(){
+			double med = 0;
+			foreach(Session k in lst){
+				med+= k.duration/3600;
+			}
+			return Convert.ToString(med);
+		}
+		/// <summary>
+		/// Gets the number hour of this day.
+		/// </summary>
+		/// <returns>The number hour of this day.</returns>
+		/// <param name="day">Day.</param>
+		public String getNumHourDay(String day){
+			double med = 0;
+			foreach(Session k in lst){
+				if (k.day.Equals(day)) {
+					med= k.duration/3600;
+				}
+			}
+			return Convert.ToString(med);
+		}
 		/// <summary>
 		/// Calculate total duration
 		/// </summary>
 		/// <returns>Total duration.</returns>
 		/// <param name="lt">List of Sessions</param>
-		private int getDurTot(List<Session> lt){
-			int toret;
-			foreach(Session k in lt){
+		private int getDurTot(){
+			int toret=0;
+			foreach(Session k in lst){
 				toret+= k.duration;
 			}
 			return toret;
@@ -44,15 +126,12 @@ namespace Stats
 		/// </summary>
 		/// <returns>total distance.</returns>
 		/// <param name="lt"> List of Sessions.</param>
-		private int getDistTot(List<Session> lt){
-			int toret;
-			foreach(Session k in lt){
+		private int getDistTotIn(){
+			int toret=0;
+			foreach(Session k in lst){
 				toret+= k.distance;
 			}
 			return toret;
-		}
-		private int getDay(){
-			
 		}
 
 	}

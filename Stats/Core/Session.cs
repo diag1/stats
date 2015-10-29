@@ -7,9 +7,7 @@ namespace Stats
 		public int start{ get; set;}
 		public int duration{ get; set;}
 		public int distance{ get; set;}
-		public int getDay(){
-			
-		}
+		public int day{get; set;}
 	}
 }
 

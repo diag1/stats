@@ -3,7 +3,9 @@
 namespace Stats
 {
 	public interface Fachada
-	{
+	{	
+		String getDistTot();
+		String getDistDay(String day);
 		String getVelMedTot();
 		String getVelMedDay(String day);
 		String getNumStpsTot();
