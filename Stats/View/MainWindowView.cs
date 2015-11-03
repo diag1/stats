@@ -54,6 +54,9 @@ namespace Stats
 			//events
 			this.DeleteEvent += (o, args) =>this.OnClose() ;
 		}
+		/// <summary>
+		/// Builds the dia.
+		/// </summary>
 		private void buildDia(){
 			SetDefaultSize(250, 200);
 			vBoxDia = new Gtk.VBox (false, 5);
@@ -82,10 +85,16 @@ namespace Stats
 			this.DeleteEvent += (o, args) =>this.OnClose() ;
 			this.btVol.Clicked += (o, args) => this.introduce ();
 		}
+		/// <summary>
+		/// Pors the dia.
+		/// </summary>
 		private void porDia(){
 			vBoxMain.Visible = false;
 			vBoxDia.Visible = true;
 		}
+		/// <summary>
+		/// Pors the main.
+		/// </summary>
 		private void porMain(){
 			vBoxMain.Visible = true;
 			vBoxDia.Visible = false;
