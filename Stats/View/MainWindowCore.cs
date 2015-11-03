@@ -10,6 +10,15 @@ namespace Stats
 		private void OnClose(){
 			Gtk.Application.Quit ();
 		}
+		private void introduce (){
+			String op1 = this.en1.Text ;
+			String format = "dd MMM yyyy";
+			this.setDia(Convert.ToDateTime (op1));
+			this.porDia();
+		}
+		private void setDia(DateTime en){
+			dia = en;
+		}
 		/// <summary>
 		/// Gets the peso.
 		/// </summary>
