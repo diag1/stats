@@ -19,10 +19,11 @@ namespace Stats
 		/// </summary>
 		/// <returns>The dist day.</returns>
 		/// <param name="day">Day.</param>
-		public String getDistDay(String day){
+		public String getDistDay(DateTime fecha){
 			double med=0.0;
 			foreach(Session k in lst){
-				if (k.day.Equals(day)) {
+				DateTime f = FromUnixTime (k.start);
+				if (f.Equals(fecha)) {
 					med= k.distance;
 				}
 			}
@@ -48,10 +49,11 @@ namespace Stats
 		/// </summary>
 		/// <returns>The vel med day.</returns>
 		/// <param name="day">Day.</param>
-		public String getVelMedDay(String day){
+		public String getVelMedDay(DateTime fecha){
 			double med=0.0;
 			foreach(Session k in lst){
-				if (k.day.Equals(day)) {
+				DateTime f = FromUnixTime (k.start);
+				if (f.Equals(fecha)) {
 					med= k.distance/k.duration;
 				}
 			}
@@ -74,11 +76,12 @@ namespace Stats
 		/// </summary>
 		/// <returns>The number stps day.</returns>
 		/// <param name="day">Day.</param>
-		public String getNumStpsDay(String day){
+		public String getNumStpsDay(DateTime fecha){
 			double distStep=0.6;
 			double med = 0;
 			foreach(Session k in lst){
-				if (k.day.Equals(day)) {
+				DateTime f = FromUnixTime (k.start);
+				if (f.Equals(fecha)) {
 					med= k.distance/distStep;
 				}
 			}
@@ -89,22 +92,45 @@ namespace Stats
 		/// </summary>
 		/// <returns>The total number of hour .</returns>
 		public String getNumHourTot(){
-			double med = 0;
+			double toret=0.0;
 			foreach(Session k in lst){
-				med+= k.duration/3600;
+				toret=k.duration/3600;
 			}
-			return Convert.ToString(med);
+			return Convert.ToString(toret);
 		}
 		/// <summary>
 		/// Gets the number hour of this day.
 		/// </summary>
 		/// <returns>The number hour of this day.</returns>
 		/// <param name="day">Day.</param>
-		public String getNumHourDay(String day){
+		public String getNumHourDay(DateTime fecha){
 			double med = 0;
 			foreach(Session k in lst){
-				if (k.day.Equals(day)) {
+				DateTime f = FromUnixTime (k.start);
+				if (f.Equals(fecha)) {
 					med= k.duration/3600;
+				}
+			}
+			return Convert.ToString(med);
+		}
+		/// <summary>
+		/// Gets the actual weight.
+		/// </summary>
+		/// <returns>The actual weight.</returns>
+		public String getActWeight(){
+			return Convert.ToString (lst[lst.Count-1].weight);
+		}
+		/// <summary>
+		/// Gets the weight day.
+		/// </summary>
+		/// <returns>The weight day.</returns>
+		/// <param name="day">Day.</param>
+		public String getWeightDay(DateTime fecha){
+			double med = 0;
+			foreach(Session k in lst){
+				DateTime f = FromUnixTime (k.start);
+				if (f.Equals(fecha)) {
+					med= k.weight;
 				}
 			}
 			return Convert.ToString(med);
@@ -132,6 +158,16 @@ namespace Stats
 				toret+= k.distance;
 			}
 			return toret;
+		}
+		/// <summary>
+		/// Froms the unix time.
+		/// </summary>
+		/// <returns>The unix time.</returns>
+		/// <param name="unixTime">Unix time.</param>
+		private DateTime FromUnixTime(long unixTime)
+		{
+			var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+			return epoch.AddSeconds(unixTime);
 		}
 
 	}
