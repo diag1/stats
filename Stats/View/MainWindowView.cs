@@ -79,7 +79,6 @@ namespace Stats
 			vBoxMain.PackStart(this.lb6,true,false,5);
 			vBoxMain.PackStart(this.en1,true,false,5);
 			vBoxMain.PackStart(this.btVol,true,false,5);
-			this.DeleteEvent += (o, args) =>this.OnClose() ;
 
 			//events
 			this.DeleteEvent += (o, args) =>this.OnClose() ;

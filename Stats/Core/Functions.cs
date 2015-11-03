@@ -23,7 +23,7 @@ namespace Stats
 			double med=0.0;
 			foreach(Session k in lst){
 				DateTime f = FromUnixTime (k.start);
-				if (f.Equals(fecha)) {
+				if (f.Year.Equals(fecha.Year)&&f.Month.Equals(fecha.Month)&&f.Day.Equals(fecha.Day)) {
 					med= k.distance;
 				}
 			}
@@ -53,7 +53,7 @@ namespace Stats
 			double med=0.0;
 			foreach(Session k in lst){
 				DateTime f = FromUnixTime (k.start);
-				if (f.Equals(fecha)) {
+				if (f.Year.Equals(fecha.Year)&&f.Month.Equals(fecha.Month)&&f.Day.Equals(fecha.Day)) {
 					med= k.distance/k.duration;
 				}
 			}
@@ -81,7 +81,7 @@ namespace Stats
 			double med = 0;
 			foreach(Session k in lst){
 				DateTime f = FromUnixTime (k.start);
-				if (f.Equals(fecha)) {
+				if (f.Year.Equals(fecha.Year)&&f.Month.Equals(fecha.Month)&&f.Day.Equals(fecha.Day)) {
 					med= k.distance/distStep;
 				}
 			}
@@ -107,7 +107,7 @@ namespace Stats
 			double med = 0;
 			foreach(Session k in lst){
 				DateTime f = FromUnixTime (k.start);
-				if (f.Equals(fecha)) {
+				if (f.Year.Equals(fecha.Year)&&f.Month.Equals(fecha.Month)&&f.Day.Equals(fecha.Day)) {
 					med= k.duration/3600;
 				}
 			}
@@ -129,7 +129,7 @@ namespace Stats
 			double med = 0;
 			foreach(Session k in lst){
 				DateTime f = FromUnixTime (k.start);
-				if (f.Equals(fecha)) {
+				if (f.Year.Equals(fecha.Year)&&f.Month.Equals(fecha.Month)&&f.Day.Equals(fecha.Day)) {
 					med= k.weight;
 				}
 			}
@@ -164,10 +164,16 @@ namespace Stats
 		/// </summary>
 		/// <returns>The unix time.</returns>
 		/// <param name="unixTime">Unix time.</param>
-		private DateTime FromUnixTime(long unixTime)
+		private  DateTime FromUnixTime(long unixTime)
 		{
 			var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 			return epoch.AddSeconds(unixTime);
+		}
+
+		private long ToUnixTime(DateTime date)
+		{
+			var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+			return Convert.ToInt64((date - epoch).TotalSeconds);
 		}
 
 	}

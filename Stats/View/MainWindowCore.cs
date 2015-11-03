@@ -10,19 +10,21 @@ namespace Stats
 		private void OnClose(){
 			Gtk.Application.Quit ();
 		}
+		/// <summary>
+		/// Introduce this instance.
+		/// </summary>
 		private void introduce (){
 			String op1 = this.en1.Text ;
-			String format = "dd MMM yyyy";
 			this.setDia(Convert.ToDateTime (op1));
-			this.porDia();
+			build();
 		}
+		/// <summary>
+		/// Sets the dia.
+		/// </summary>
+		/// <param name="en">En.</param>
 		private void setDia(DateTime en){
 			dia = en;
 		}
-		/// <summary>
-		/// Gets the peso.
-		/// </summary>
-		/// <returns>The peso.</returns>
 	}
 }
 
