@@ -44,7 +44,7 @@ namespace Stats
 			this.lb4 = new Gtk.Label("Pasos: "+fa.getNumStpsTot());
 			this.lb5 = new Gtk.Label("Horas: "+fa.getNumHourTot());
 			this.lb6 = new Gtk.Label("Velocidad Media: "+fa.getVelMedTot());
-			this.en1 = new Gtk.Entry("\"dd/MM/yyyy\"");
+			this.en1 = new Gtk.Entry("dd/MM/yyyy");
 			this.en1.Alignment = 1;
 			this.btVol = new Gtk.Button("Aceptar");
 			//vBox
