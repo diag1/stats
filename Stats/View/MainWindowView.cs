@@ -16,7 +16,7 @@ namespace Stats
 			SetDefaultSize(250, 200);
 			vBoxMain = new Gtk.VBox (false, 5);
 			//widgets
-			this.lb1 = new Gtk.Label("Autobuses manolo");
+			this.lb1 = new Gtk.Label("ESTADISTICAS");
 			//vBox
 			vBoxMain.PackStart(this.lb1,true,false,5);
 			this.DeleteEvent += (o, args) =>this.OnClose() ;
