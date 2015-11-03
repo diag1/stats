@@ -16,7 +16,7 @@ namespace Stats
 		private void introduce (){
 			String op1 = this.en1.Text ;
 			this.setDia(Convert.ToDateTime (op1));
-			build();
+			this.porDia();
 		}
 		/// <summary>
 		/// Sets the dia.
