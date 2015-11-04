@@ -40,6 +40,7 @@ namespace Stats
 			this.lb1 = new Gtk.Label("ESTADISTICAS");
 			lb1.UseMarkup = true;
 			this.lb2 = new Gtk.Label("Peso: "+fa.getActWeight());
+			Console.Write ("hola");
 			this.lb3 = new Gtk.Label("Distancia: "+fa.getDistTot());
 			this.lb4 = new Gtk.Label("Pasos: "+fa.getNumStpsTot());
 			this.lb5 = new Gtk.Label("Horas: "+fa.getNumHourTot());
@@ -91,6 +92,13 @@ namespace Stats
 			this.DeleteEvent += (o, args) =>this.OnClose() ;
 			this.btVol.Clicked += (o, args) => this.porMain ();
 
+		}
+		private void newDay(){
+			this.lb8.Text ="Peso: " + fa.getWeightDay (dia);
+			this.lb9.Text ="Distancia: "+fa.getDistDay(dia);
+			this.lb10.Text ="Pasos: "+fa.getNumStpsDay(dia);
+			this.lb11.Text ="Horas: "+fa.getNumHourDay(dia);
+			this.lb12.Text ="Velocidad Media: "+fa.getVelMedDay(dia);
 		}
 		/// <summary>
 		/// Pors the dia.

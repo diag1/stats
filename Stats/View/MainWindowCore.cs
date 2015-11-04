@@ -18,9 +18,12 @@ namespace Stats
 		private void introduce (){
 			String op1 = this.en1.Text ;
 			if (isDate (op1)) {
-				this.setDia(Convert.ToDateTime (op1));
-			}
-			this.porDia();
+				this.setDia (Convert.ToDateTime (op1));
+				this.newDay ();
+				this.porDia ();
+			} else
+				this.porMain ();
+
 		}
 		/// <summary>
 		/// Sets the dia.
