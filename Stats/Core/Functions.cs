@@ -92,11 +92,32 @@ namespace Stats
 		/// </summary>
 		/// <returns>The total number of hour .</returns>
 		public String getNumHourTot(){
-			double toret=0.0;
+			String toret="0";
+			int dias = 0;
+			int horas = 0;
+			int min = 0;
+			int sec = 0;
+			DateTime f;
 			foreach(Session k in lst){
-				toret=k.duration/3600;
+				f = FromUnixTime (k.duration);
+				sec += f.Second;
+				if (sec >= 60) {
+					sec=sec - 60;
+					min++;
+				}
+				min += f.Minute;
+				if (min >= 60) {
+					min=min - 60;
+					horas++;
+				}
+				horas += f.Hour;
+				if (horas >= 24) {
+					horas=horas - 24;
+					dias++;
+				}
 			}
-			return Convert.ToString(toret);
+			toret = dias + "d " + horas + "h " + min + "m " + sec + "s ";
+			return toret;
 		}
 		/// <summary>
 		/// Gets the number hour of this day.
@@ -104,14 +125,14 @@ namespace Stats
 		/// <returns>The number hour of this day.</returns>
 		/// <param name="day">Day.</param>
 		public String getNumHourDay(DateTime fecha){
-			double med = 0;
+			String toret="0";
 			foreach(Session k in lst){
 				DateTime f = FromUnixTime (k.start);
 				if (f.Year.Equals(fecha.Year)&&f.Month.Equals(fecha.Month)&&f.Day.Equals(fecha.Day)) {
-					med= k.duration/3600;
+					toret=f.Hour+"h "+f.Minute+"m "+f.Second+"s";
 				}
 			}
-			return Convert.ToString(med);
+			return toret;
 		}
 		/// <summary>
 		/// Gets the actual weight.
@@ -140,8 +161,8 @@ namespace Stats
 		/// </summary>
 		/// <returns>Total duration.</returns>
 		/// <param name="lt">List of Sessions</param>
-		private int getDurTot(){
-			int toret=0;
+		private long getDurTot(){
+			long toret=0;
 			foreach(Session k in lst){
 				toret+= k.duration;
 			}
