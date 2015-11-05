@@ -32,6 +32,11 @@ namespace Stats
 		private void setDia(DateTime en){
 			dia = en;
 		}
+		/// <summary>
+		/// Ises the date.
+		/// </summary>
+		/// <returns><c>true</c>, if date was ised, <c>false</c> otherwise.</returns>
+		/// <param name="a">The alpha component.</param>
 		private bool isDate(string a) 
 		{ //string estará en formato dd/mm/yyyy (dí­as < 32 y meses < 13)
 			Regex Val = new Regex(@"(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)");

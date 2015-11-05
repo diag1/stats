@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections.Generic;
 
@@ -128,8 +128,9 @@ namespace Stats
 			String toret="0";
 			foreach(Session k in lst){
 				DateTime f = FromUnixTime (k.start);
+				DateTime w = FromUnixTime (k.duration);
 				if (f.Year.Equals(fecha.Year)&&f.Month.Equals(fecha.Month)&&f.Day.Equals(fecha.Day)) {
-					toret=f.Hour+"h "+f.Minute+"m "+f.Second+"s";
+					toret=w.Hour+"h "+w.Minute+"m "+w.Second+"s";
 				}
 			}
 			return toret;
@@ -190,7 +191,11 @@ namespace Stats
 			var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 			return epoch.AddSeconds(unixTime);
 		}
-
+		/// <summary>
+		/// Tos the unix time.
+		/// </summary>
+		/// <returns>The unix time.</returns>
+		/// <param name="date">Date.</param>
 		private long ToUnixTime(DateTime date)
 		{
 			var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
